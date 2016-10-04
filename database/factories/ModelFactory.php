@@ -19,3 +19,13 @@ $factory->define(Admin\Models\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(\Admin\Models\QuemSomos::class, function($faker){
+    return[
+        'description' => $faker->sentence,
+        'whyUs' => $faker->sentence,
+        'ourValues' => $faker->sentence,
+        'vision' => $faker->sentence,
+        'linkVideo' => $faker->url
+    ];
+});

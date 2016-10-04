@@ -182,6 +182,8 @@ $(function () {
         var text = '';
         var fail = false;
 
+
+
         if(!name)
         {
             e.preventDefault();
@@ -222,6 +224,9 @@ $(function () {
             text = 'Contato enviado com sucesso';
             snackbar(text);
         }
+        else{
+            snackbar(text);
+        }
 
         //return false;
     });
@@ -236,6 +241,7 @@ $(function () {
 
     function snackbar(text)
     {
+
         // Get the snackbar DIV
         var x = document.getElementById("snackbar");
 

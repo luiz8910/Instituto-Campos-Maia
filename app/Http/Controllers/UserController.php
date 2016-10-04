@@ -2,6 +2,8 @@
 
 namespace Admin\Http\Controllers;
 
+use Admin\Repositories\CargoRepository;
+use Admin\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 use Admin\Http\Requests;
@@ -10,13 +12,31 @@ use Admin\Http\Controllers\Controller;
 class UserController extends Controller
 {
     /**
+     * @var UserRepository
+     */
+    private $repository;
+    /**
+     * @var CargoRepository
+     */
+    private $cargoRepository;
+
+    public function __construct(UserRepository $repository, CargoRepository $cargoRepository)
+    {
+
+        $this->repository = $repository;
+        $this->cargoRepository = $cargoRepository;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        return view('admin.usuarios.index');
+        $user = $this->repository->all();
+
+        return view('admin.usuarios.index', compact('user'));
     }
 
     /**

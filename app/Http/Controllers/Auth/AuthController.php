@@ -2,7 +2,7 @@
 
 namespace Admin\Http\Controllers\Auth;
 
-use Admin\User;
+use Admin\Models\User;
 use Validator;
 use Admin\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -44,6 +44,8 @@ class AuthController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
+            'role' => 'required|max:255'
+//            'img'  => 'mimes:jpeg, bmp, png'
         ]);
     }
 
@@ -59,6 +61,8 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'role' => $data['role']
+//            'img'  => $data['img']
         ]);
     }
 }

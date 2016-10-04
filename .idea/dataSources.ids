@@ -122,278 +122,281 @@
       <column id="38" parent="6" name="role">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
-        <default-expression>&apos;client&apos;</default-expression>
+        <default-expression>&apos;operador&apos;</default-expression>
       </column>
-      <column id="39" parent="6" name="remember_token">
+      <column id="39" parent="6" name="img">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="40" parent="6" name="remember_token">
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="40" parent="6" name="created_at">
+      <column id="41" parent="6" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="41" parent="6" name="updated_at">
+      <column id="42" parent="6" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <index id="42" parent="6" name="users_email_unique">
+      <index id="43" parent="6" name="users_email_unique">
         <columns>email</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="43" parent="6" name="PRIMARY">
+      <key id="44" parent="6" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <key id="44" parent="6" name="users_email_unique">
+      <key id="45" parent="6" name="users_email_unique">
         <columns>email</columns>
         <underlying-index>users_email_unique</underlying-index>
       </key>
-      <column id="45" parent="7" name="id">
+      <column id="46" parent="7" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="46" parent="7" name="description">
+      <column id="47" parent="7" name="description">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="47" parent="7" name="whyUs">
+      <column id="48" parent="7" name="whyUs">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="48" parent="7" name="ourValues">
+      <column id="49" parent="7" name="ourValues">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="49" parent="7" name="vision">
+      <column id="50" parent="7" name="vision">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="50" parent="7" name="linkVideo">
+      <column id="51" parent="7" name="linkVideo">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="51" parent="7" name="created_at">
+      <column id="52" parent="7" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="52" parent="7" name="updated_at">
+      <column id="53" parent="7" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="53" parent="7" name="PRIMARY">
+      <key id="54" parent="7" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="54" parent="8" name="id">
+      <column id="55" parent="8" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="55" parent="8" name="missao">
+      <column id="56" parent="8" name="missao">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="56" parent="8" name="valores">
+      <column id="57" parent="8" name="valores">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="57" parent="8" name="visao">
+      <column id="58" parent="8" name="visao">
         <mandatory>1</mandatory>
         <data-type>varchar(100)</data-type>
       </column>
-      <column id="58" parent="8" name="created_at">
+      <column id="59" parent="8" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="59" parent="8" name="updated_at">
+      <column id="60" parent="8" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="60" parent="8" name="PRIMARY">
+      <key id="61" parent="8" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="61" parent="9" name="id">
+      <column id="62" parent="9" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="62" parent="9" name="img">
+      <column id="63" parent="9" name="img">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="63" parent="9" name="nome">
+      <column id="64" parent="9" name="nome">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="64" parent="9" name="cargo">
+      <column id="65" parent="9" name="cargo">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="65" parent="9" name="facebook">
+      <column id="66" parent="9" name="facebook">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="66" parent="9" name="email">
+      <column id="67" parent="9" name="email">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="67" parent="9" name="skype">
+      <column id="68" parent="9" name="skype">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="68" parent="9" name="created_at">
+      <column id="69" parent="9" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="69" parent="9" name="updated_at">
+      <column id="70" parent="9" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="70" parent="9" name="PRIMARY">
+      <key id="71" parent="9" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="71" parent="10" name="id">
+      <column id="72" parent="10" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="72" parent="10" name="nome">
+      <column id="73" parent="10" name="nome">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="73" parent="10" name="site">
+      <column id="74" parent="10" name="site">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="74" parent="10" name="imagem">
+      <column id="75" parent="10" name="imagem">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="75" parent="10" name="created_at">
-        <mandatory>1</mandatory>
-        <data-type>timestamp</data-type>
-        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
-      </column>
-      <column id="76" parent="10" name="updated_at">
+      <column id="76" parent="10" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="77" parent="10" name="PRIMARY">
+      <column id="77" parent="10" name="updated_at">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
+      </column>
+      <key id="78" parent="10" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="78" parent="11" name="id">
+      <column id="79" parent="11" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="79" parent="11" name="email">
+      <column id="80" parent="11" name="email">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="80" parent="11" name="created_at">
+      <column id="81" parent="11" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="81" parent="11" name="updated_at">
+      <column id="82" parent="11" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="82" parent="11" name="PRIMARY">
+      <key id="83" parent="11" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="83" parent="12" name="id">
+      <column id="84" parent="12" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="84" parent="12" name="name">
+      <column id="85" parent="12" name="name">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="85" parent="12" name="tel">
+      <column id="86" parent="12" name="tel">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="86" parent="12" name="subject">
+      <column id="87" parent="12" name="subject">
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="87" parent="12" name="email">
+      <column id="88" parent="12" name="email">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="88" parent="12" name="msg">
+      <column id="89" parent="12" name="msg">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="89" parent="12" name="created_at">
+      <column id="90" parent="12" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="90" parent="12" name="updated_at">
+      <column id="91" parent="12" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="91" parent="12" name="PRIMARY">
+      <key id="92" parent="12" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>
-      <column id="92" parent="13" name="id">
+      <column id="93" parent="13" name="id">
         <mandatory>1</mandatory>
         <data-type>int(10) unsigned</data-type>
       </column>
-      <column id="93" parent="13" name="topic">
+      <column id="94" parent="13" name="topic">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="94" parent="13" name="description">
+      <column id="95" parent="13" name="description">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="95" parent="13" name="address">
+      <column id="96" parent="13" name="address">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="96" parent="13" name="city">
+      <column id="97" parent="13" name="city">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="97" parent="13" name="zipCode">
+      <column id="98" parent="13" name="zipCode">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="98" parent="13" name="telOwner">
+      <column id="99" parent="13" name="telOwner">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="99" parent="13" name="celOwner">
+      <column id="100" parent="13" name="celOwner">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="100" parent="13" name="emailOwner">
+      <column id="101" parent="13" name="emailOwner">
         <mandatory>1</mandatory>
         <data-type>varchar(255)</data-type>
       </column>
-      <column id="101" parent="13" name="created_at">
+      <column id="102" parent="13" name="created_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <column id="102" parent="13" name="updated_at">
+      <column id="103" parent="13" name="updated_at">
         <mandatory>1</mandatory>
         <data-type>timestamp</data-type>
         <default-expression>&apos;0000-00-00 00:00:00&apos;</default-expression>
       </column>
-      <key id="103" parent="13" name="PRIMARY">
+      <key id="104" parent="13" name="PRIMARY">
         <columns>id</columns>
         <primary>1</primary>
       </key>

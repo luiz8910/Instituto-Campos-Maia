@@ -46,7 +46,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-3">
                             <div class="form-group">
-                                <a href="add-quem-somos.html">
+                                <a href="{{ route('admin.usuarios.create') }}">
                                     <button type="button" class="btn btn-success">
                                         <i class="fa fa-plus" aria-hidden="true"></i>
                                         Adicionar Novo Usuário
@@ -62,74 +62,80 @@
                     </ol>
                     <!-- Fim separador de função -->
 
-                    <div class="col-sm-6 col-md-3 col-xs-12">
-                        <div class="thumbnail">
-                            <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="Imagem responsiva">
-                            <div class="caption">
-                                <h4>Nome do Usuário</h4>
-                                <p>
-                                    <strong>Função:</strong> Administrador
-                                </p>
-                                <p>
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        Editar
-                                    </button>
-                                </p>
-                                <!-- Modal -->
-                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">Editar Funcionario "Nome Usuário"</h4>
-                                            </div><!-- fim div .modal-header -->
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="exampleInputFile">Imagem (Foto do Usuário)</label>
-                                                    <input type="file" id="exampleInputFile">
-                                                    <p class="text-info">
-                                                        <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                        A foto para o Usuário deve conter o tamanho de 500px X 600px!
-                                                    </p>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Nome do Usuário</label>
-                                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Usuário">
-                                                    <p class="text-info">
-                                                        <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                        O campo acima deve conter o nome do funciário!
-                                                    </p>
-                                                </div><!-- fim div .input-group -->
-                                                <div class="form-group">
-                                                    <label for="exampleInputEmail1">Função do Usuário</label>
-                                                    <select class="form-control">
-                                                        <option value="0">Selecione</option>
-                                                        <option value="1">Administrador</option>
-                                                        <option value="2">Editor</option>
-                                                        <option value="3">Usuário Básico</option>
-                                                    </select>
-                                                    <p class="text-info">
-                                                        <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                        O campo você deve selecionar a função administrativa dentro do admin do site!
-                                                    </p>
-                                                </div><!-- fim div .input-group -->
+                    @foreach($user as $e)
+
+                        <div class="col-sm-6 col-md-3 col-xs-12">
+                            <div class="thumbnail">
+                                <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="Imagem responsiva">
+                                <div class="caption">
+                                    <h4>{{ $e->name or '' }}</h4>
+                                    <p>
+                                        <strong>Cargo:</strong> {{ $e->role or ''}}
+                                    </p>
+                                    <p>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                            Editar
+                                        </button>
+                                    </p>
 
 
-                                            </div><!-- fim div .modal-body -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger">Excluir</button>
-                                                <button type="button" class="btn btn-success" data-dismiss="modal">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Salvar
-                                                </button>
-                                            </div><!-- fim div .modal-footer -->
-                                        </div><!-- fim div .modal-content -->
-                                    </div><!-- fim div .modal-dialog -->
-                                </div><!-- fim div .modal .fade -->
-                            </div><!-- fim div .Capition -->
-                        </div><!-- fim div .thumbnail -->
-                    </div><!-- fim  div .col-sm-6 col-md-3 -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Editar Funcionario "Nome Usuário"</h4>
+                                                </div><!-- fim div .modal-header -->
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="exampleInputFile">Imagem (Foto do Usuário)</label>
+                                                        <input type="file" id="exampleInputFile">
+                                                        <p class="text-info">
+                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
+                                                            A foto para o Usuário deve conter o tamanho de 500px X 600px!
+                                                        </p>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Nome do Usuário</label>
+                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Usuário">
+                                                        <p class="text-info">
+                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
+                                                            O campo acima deve conter o nome do funcionário!
+                                                        </p>
+                                                    </div><!-- fim div .input-group -->
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Função do Usuário</label>
+                                                        <select class="form-control">
+                                                            <option value="0">Selecione</option>
+                                                            <option value="1">Administrador</option>
+                                                            <option value="2">Editor</option>
+                                                            <option value="3">Usuário Básico</option>
+                                                        </select>
+                                                        <p class="text-info">
+                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
+                                                            O campo você deve selecionar a função administrativa dentro do admin do site!
+                                                        </p>
+                                                    </div><!-- fim div .input-group -->
+
+
+                                                </div><!-- fim div .modal-body -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger">Excluir</button>
+                                                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Salvar
+                                                    </button>
+                                                </div><!-- fim div .modal-footer -->
+                                            </div><!-- fim div .modal-content -->
+                                        </div><!-- fim div .modal-dialog -->
+                                    </div><!-- fim div .modal .fade -->
+                                </div><!-- fim div .Capition -->
+                            </div><!-- fim div .thumbnail -->
+                        </div><!-- fim  div .col-sm-6 col-md-3 -->
+
+                    @endforeach
 
 
                     <!-- div de separação alinhada -->

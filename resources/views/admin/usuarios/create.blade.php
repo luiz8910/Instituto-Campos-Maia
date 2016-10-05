@@ -25,7 +25,7 @@
                     <div class="separador-1"></div> <!-- fim div .separador-1 -->
 
                     <!-- Alertas da pagina -->
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-success alert-dismissible" role="alert" hidden>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -33,7 +33,7 @@
                         Suas alterações foram salvas!
                         <strong>:)</strong>
                     </div><!-- fim div .alert.alert-success.alert-dismissible -->
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" hidden>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -44,9 +44,11 @@
 
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <strong>Whoops!</strong> Revise os campos abaixo.<br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
+                                    <?php $error = str_replace('name', 'nome', $error); ?>
+                                    <?php $error = str_replace('password', 'senha', $error); ?>
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
@@ -59,8 +61,7 @@
 
                         <div class="col-md-6 col-sm-12">
 
-                            <form role="form" method="POST" action="{{ url('/auth/register') }}">
-                                {!! csrf_field() !!}
+                            {!! Form::open(['route' => 'admin.usuarios.store', 'method' => 'post', 'role' => 'form']) !!}
 
                                 {{--<div class="form-group">--}}
 
@@ -145,9 +146,9 @@
 
                                     <label for="exampleInputEmail1">Função do Usuário</label>
 
-                                    <select class="form-control" name="role">
+                                    <select class="form-control" name="role" required>
 
-                                        <option value="0">Selecione</option>
+                                        <option value="">Selecione</option>
 
                                         <option value="Administrador">Administrador</option>
 
@@ -176,7 +177,7 @@
 
                                 </button>
 
-                            </form>
+                            {!! Form::close() !!}
 
                         </div><!-- fim div .col-md-12 -->
 

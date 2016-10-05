@@ -6,6 +6,8 @@ use Admin\Repositories\CargoRepository;
 use Admin\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
+use Admin\Http\Requests\UserRequest;
+
 use Admin\Http\Requests;
 use Admin\Http\Controllers\Controller;
 
@@ -22,7 +24,6 @@ class UserController extends Controller
 
     public function __construct(UserRepository $repository, CargoRepository $cargoRepository)
     {
-
         $this->repository = $repository;
         $this->cargoRepository = $cargoRepository;
     }
@@ -34,9 +35,15 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = $this->repository->all();
+        //$user = $this->repository->all();
 
-        return view('admin.usuarios.index', compact('user'));
+        $user = $this->repository->findByField('role', 'Administrador');
+
+        $editor = $this->repository->findByField('role', 'Editor');
+
+        $operador = $this->repository->findByField('role', 'Operador');
+
+        return view('admin.usuarios.index', compact('user', 'editor', 'operador'));
     }
 
     /**
@@ -55,9 +62,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $data['password'] = bcrypt($data['password']);
+
+        $this->repository->create($data);
+
+        return redirect()->route('admin.usuarios.index');
     }
 
     /**

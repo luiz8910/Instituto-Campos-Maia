@@ -87,6 +87,8 @@ Route::get('add-usuarios', ['as' => 'admin.usuarios.create', 'uses' => 'UserCont
 
 Route::get('edit-usuarios', ['as' => 'admin.usuarios.edit', 'uses' => 'UserController@edit']);
 
+Route::post('salvar-usuarios', ['as' => 'admin.usuarios.store', 'uses' => 'UserController@store']);
+
 /* Fim Usuários */
 
 //-----------------------------------------  Parceiros ------------------------------------------------------------

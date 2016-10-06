@@ -183,53 +183,47 @@ $(function () {
         var fail = false;
 
 
-
-        if(!name)
-        {
+        if (!name) {
             e.preventDefault();
             text += 'O Campo nome deve ser preenchido' + '<br>';
             fail = true;
         }
 
-        if(!tel)
-        {
+        if (!tel) {
             e.preventDefault();
             text += 'O Campo telefone deve ser preenchido' + '<br>';
             fail = true;
         }
 
-        if(!subject)
-        {
+        if (!subject) {
             e.preventDefault();
             text += 'O Campo Assunto deve ser preenchido' + '<br>';
             fail = true;
         }
 
-        if(!email)
-        {
+        if (!email) {
             e.preventDefault();
             text += 'O Campo email deve ser preenchido' + '<br>';
             fail = true;
         }
 
-        if(!msg)
-        {
+        if (!msg) {
             e.preventDefault();
             text += 'O Campo mensagem deve ser preenchido' + '<br>';
             fail = true;
         }
 
-        if(!fail)
-        {
+        if (!fail) {
             text = 'Contato enviado com sucesso';
             snackbar(text);
         }
-        else{
+        else {
             snackbar(text);
         }
 
         //return false;
     });
+
 
 
     function scroll() {
@@ -239,8 +233,7 @@ $(function () {
     }
 
 
-    function snackbar(text)
-    {
+    function snackbar(text) {
 
         // Get the snackbar DIV
         var x = document.getElementById("snackbar");
@@ -251,7 +244,7 @@ $(function () {
         x.className = "show";
 
         // After 3 seconds, remove the show class from DIV
-        setTimeout(function() {
+        setTimeout(function () {
             x.className = x.className.replace("show", "");
         }, 3000);
 

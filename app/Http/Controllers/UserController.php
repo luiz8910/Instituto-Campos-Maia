@@ -10,6 +10,8 @@ use Admin\Http\Requests\UserRequest;
 
 use Admin\Http\Requests;
 use Admin\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use Mockery\CountValidator\Exception;
 
 class UserController extends Controller
 {
@@ -98,13 +100,13 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return boolean
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->repository->update($request->all(), $id);
+
+        return redirect()->route('admin.usuarios.index');
     }
 
     /**

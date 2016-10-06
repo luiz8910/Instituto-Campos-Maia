@@ -25,7 +25,7 @@
                     <div class="separador-1"></div> <!-- fim div .separador-1 -->
 
                     <!-- Alertas da pagina -->
-                    <div class="alert alert-success alert-dismissible" role="alert">
+                    <div class="alert alert-success alert-dismissible" role="alert" hidden>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -33,7 +33,7 @@
                         Suas alterações foram salvas!
                         <strong>:)</strong>
                     </div><!-- fim div .alert.alert-success.alert-dismissible -->
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible" role="alert" hidden>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -62,72 +62,87 @@
                     </ol>
                     <!-- Fim separador de função -->
 
-                    @foreach($user as $e)
+                    @foreach($user as $u)
 
                         <div class="col-sm-6 col-md-3 col-xs-12">
                             <div class="thumbnail">
-                                <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="Imagem responsiva">
+                                <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="{{ $u->name }}">
                                 <div class="caption">
-                                    <h4>{{ $e->name }}</h4>
+                                    <h4>{{ $u->name }}</h4>
                                     <p>
-                                        <strong>Cargo:</strong> {{ $e->role}}
+                                        <strong>Cargo:</strong> {{ $u->role}}
                                     </p>
-                                    <p>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                            Editar
-                                        </button>
-                                    </p>
+                                        <p>
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AdminModal{{ $u->id }}">
+                                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                                Editar
+                                            </button>
 
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                                Excluir
+                                            </button>
+                                        </p>
+
+                                        <p>
+                                            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#myModal1">
+                                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                                Alterar Imagem
+                                            </button>
+                                        </p>
 
                                     <!-- Modal -->
-                                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal fade" id="AdminModal{{ $u->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Editar Funcionario "Nome Usuário"</h4>
-                                                </div><!-- fim div .modal-header -->
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputFile">Imagem (Foto do Usuário)</label>
-                                                        <input type="file" id="exampleInputFile">
-                                                        <p class="text-info">
-                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                            A foto para o Usuário deve conter o tamanho de 500px X 600px!
-                                                        </p>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Nome do Usuário</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Usuário">
-                                                        <p class="text-info">
-                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                            O campo acima deve conter o nome do funcionário!
-                                                        </p>
-                                                    </div><!-- fim div .input-group -->
-                                                    <div class="form-group">
-                                                        <label for="exampleInputEmail1">Função do Usuário</label>
-                                                        <select class="form-control">
-                                                            <option value="0">Selecione</option>
-                                                            <option value="1">Administrador</option>
-                                                            <option value="2">Editor</option>
-                                                            <option value="3">Usuário Básico</option>
-                                                        </select>
-                                                        <p class="text-info">
-                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                            O campo você deve selecionar a função administrativa dentro do admin do site!
-                                                        </p>
-                                                    </div><!-- fim div .input-group -->
+
+                                                {!! Form::open(['route' => ['admin.usuarios.update', $u->id], 'method' => 'post']) !!}
+
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Editar Funcionario - {{ $u->name }}</h4>
+                                                    </div><!-- fim div .modal-header -->
+                                                    <div class="modal-body">
+                                                        {{--<div class="form-group">--}}
+                                                            {{--<label for="exampleInputFile">Imagem (Foto do Usuário)</label>--}}
+                                                            {{--<input type="file" id="exampleInputFile">--}}
+                                                            {{--<p class="text-info">--}}
+                                                                {{--<i class="fa fa-question-circle " aria-hidden="true"></i>--}}
+                                                                {{--A foto para o Usuário deve conter o tamanho de 500px X 600px!--}}
+                                                            {{--</p>--}}
+                                                        {{--</div>--}}
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Nome do Usuário</label>
+                                                            <input type="text" name="name" class="form-control" id="name-{{ $u->id }}"
+                                                                   value="{{ $u->name }}" placeholder="Nome do Usuário" required>
+                                                            <p class="text-info">
+                                                                <i class="fa fa-question-circle " aria-hidden="true"></i>
+                                                                O campo acima deve conter o nome do funcionário!
+                                                            </p>
+                                                        </div><!-- fim div .input-group -->
+                                                        <div class="form-group">
+                                                            <label for="exampleInputEmail1">Função do Usuário</label>
+                                                            <select class="form-control" name="role" id="role-{{ $u->id }}" required>
+                                                                <option value="">Selecione</option>
+                                                                <option value="Administrador" selected>Administrador</option>
+                                                                <option value="Editor">Editor</option>
+                                                                <option value="Usuário Básico">Usuário Básico</option>
+                                                            </select>
+                                                            <p class="text-info">
+                                                                <i class="fa fa-question-circle " aria-hidden="true"></i>
+                                                                No campo acima você deve selecionar a função administrativa dentro do site!
+                                                            </p>
+                                                        </div><!-- fim div .input-group -->
 
 
-                                                </div><!-- fim div .modal-body -->
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger">Excluir</button>
-                                                    <button type="button" class="btn btn-success" data-dismiss="modal">
-                                                        <i class="fa fa-check-square-o"></i>
-                                                        Salvar
-                                                    </button>
-                                                </div><!-- fim div .modal-footer -->
+                                                    </div><!-- fim div .modal-body -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success">
+                                                            <i class="fa fa-check-square-o"></i>
+                                                            Salvar
+                                                        </button>
+                                                    </div><!-- fim div .modal-footer -->
+                                                {!! Form::close() !!}
                                             </div><!-- fim div .modal-content -->
                                         </div><!-- fim div .modal-dialog -->
                                     </div><!-- fim div .modal .fade -->
@@ -158,43 +173,58 @@
                                         <strong>Função:</strong> {{ $e->role }}
                                     </p>
                                     <p>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal{{ $e->id }}">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             Editar
                                         </button>
+
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                            <i class="fa fa-ban" aria-hidden="true"></i>
+                                            Excluir
+                                        </button>
                                     </p>
+
+                                    <p>
+                                        <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#myModal1">
+                                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                            Alterar Imagem
+                                        </button>
+                                    </p>
+
+
                                     <!-- Modal -->
-                                    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal fade" id="editModal{{ $e->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
+
+                                                {!! Form::open(['route' => ['admin.usuarios.update', $e->id], 'method' => 'post']) !!}
+
                                                 <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Editar Funcionario "Nome Usuário"</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                    <h4 class="modal-title" id="myModalLabel">Editar Funcionario - {{ $e->name }}</h4>
                                                 </div><!-- fim div .modal-header -->
+
                                                 <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label for="exampleInputFile">Imagem (Foto do Usuário)</label>
-                                                        <input type="file" id="exampleInputFile">
-                                                        <p class="text-info">
-                                                            <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                            A foto para o Usuário deve conter o tamanho de 500px X 600px!
-                                                        </p>
-                                                    </div>
+
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Nome do Usuário</label>
-                                                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Usuário">
+                                                        <input type="text" class="form-control" id="name"
+                                                               name="name" value="{{ $e->name }}" placeholder="Nome do Usuário" required>
                                                         <p class="text-info">
                                                             <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                            O campo acima deve conter o nome do funciário!
+                                                            O campo acima deve conter o nome do funcionário!
                                                         </p>
                                                     </div><!-- fim div .input-group -->
+
                                                     <div class="form-group">
                                                         <label for="exampleInputEmail1">Função do Usuário</label>
-                                                        <select class="form-control">
-                                                            <option value="0">Selecione</option>
-                                                            <option value="1">Administrador</option>
-                                                            <option value="2">Editor</option>
-                                                            <option value="3">Usuário Básico</option>
+                                                        <select class="form-control" name="role" required>
+                                                            <option value="">Selecione</option>
+                                                            <option value="Administrador">Administrador</option>
+                                                            <option value="Editor" selected>Editor</option>
+                                                            <option value="Operador">Operador</option>
                                                         </select>
                                                         <p class="text-info">
                                                             <i class="fa fa-question-circle " aria-hidden="true"></i>
@@ -205,12 +235,13 @@
 
                                                 </div><!-- fim div .modal-body -->
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-danger">Excluir</button>
-                                                    <button type="button" class="btn btn-success" data-dismiss="modal">
+                                                    <button type="submit" class="btn btn-success">
                                                         <i class="fa fa-check-square-o"></i>
                                                         Salvar
                                                     </button>
                                                 </div><!-- fim div .modal-footer -->
+
+                                                {!! Form::close() !!}
                                             </div><!-- fim div .modal-content -->
                                         </div><!-- fim div .modal-dialog -->
                                     </div><!-- fim div .modal .fade -->
@@ -241,43 +272,52 @@
                                             <strong>Função:</strong> {{ $o->role }}
                                         </p>
                                         <p>
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#operModal{{ $o->id }}">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                 Editar
                                             </button>
+
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                                <i class="fa fa-ban" aria-hidden="true"></i>
+                                                Excluir
+                                            </button>
+                                        </p>
+
+                                        <p>
+                                            <button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#myModal1">
+                                                <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                                                Alterar Imagem
+                                            </button>
                                         </p>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal fade" id="operModal{{ $o->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
+                                                    {!! Form::open(['route' => ['admin.usuarios.update', $o->id], 'method' => 'post']) !!}
                                                     <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                        <h4 class="modal-title" id="myModalLabel">Editar Funcionario "Nome Usuário"</h4>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">Editar Funcionario - {{ $o->name }}</h4>
                                                     </div><!-- fim div .modal-header -->
                                                     <div class="modal-body">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputFile">Imagem (Foto do Usuário)</label>
-                                                            <input type="file" id="exampleInputFile">
-                                                            <p class="text-info">
-                                                                <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                                A foto para o Usuário deve conter o tamanho de 500px X 600px!
-                                                            </p>
-                                                        </div>
+
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Nome do Usuário</label>
-                                                            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome do Usuário">
+                                                            <input type="text" class="form-control" id="name"
+                                                                   placeholder="Nome do Usuário" name="name" value="{{ $o->name }}" required>
                                                             <p class="text-info">
                                                                 <i class="fa fa-question-circle " aria-hidden="true"></i>
-                                                                O campo acima deve conter o nome do funciário!
+                                                                O campo acima deve conter o nome do funcionário!
                                                             </p>
                                                         </div><!-- fim div .input-group -->
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Função do Usuário</label>
-                                                            <select class="form-control">
-                                                                <option value="0">Selecione</option>
-                                                                <option value="1">Administrador</option>
-                                                                <option value="2">Editor</option>
-                                                                <option value="3">Usuário Básico</option>
+                                                            <select class="form-control" name="role" id="role" required>
+                                                                <option value="">Selecione</option>
+                                                                <option value="Administrador">Administrador</option>
+                                                                <option value="Editor">Editor</option>
+                                                                <option value="Operador" selected>Operador</option>
                                                             </select>
                                                             <p class="text-info">
                                                                 <i class="fa fa-question-circle " aria-hidden="true"></i>
@@ -288,12 +328,12 @@
 
                                                     </div><!-- fim div .modal-body -->
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger">Excluir</button>
-                                                        <button type="button" class="btn btn-success" data-dismiss="modal">
+                                                        <button type="submit" class="btn btn-success">
                                                             <i class="fa fa-check-square-o"></i>
                                                             Salvar
                                                         </button>
                                                     </div><!-- fim div .modal-footer -->
+                                                    {!! Form::close() !!}
                                                 </div><!-- fim div .modal-content -->
                                             </div><!-- fim div .modal-dialog -->
                                         </div><!-- fim div .modal .fade -->
@@ -308,11 +348,6 @@
                     <!-- fim div de separação alinhada -->
 
 
-                    <br>
-                    <button type="submit" class="btn btn-success" id="subir">
-                        <i class="fa fa-check-square-o"></i>
-                        Salvar
-                    </button>
                 </div> <!-- fim div .col-lg-12 -->
             </div>  <!-- fim div .row -->
         </div> <!-- fim div .container-fluid -->

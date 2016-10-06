@@ -55,7 +55,7 @@ Route::get("edit-quem-somos/{id}", ["as" => "admin.quem-somos.edit", "uses" => "
 
 Route::post("gravar-quem-somos", ["as" => "admin.quem-somos.store", "uses" => "QuemSomosController@store"]);
 
-Route::post("alterar-quem-somos", ["as" => "admin.quem-somos.update", "uses" => "QuemSomosController@update"]);
+Route::post("alterar-quem-somos", ["as" => "admin.quem-somos.update", "uses" => "QuemSomosController@update"]); //ajax request
 
 Route::get("excluir-quem-somos/{id}", ["as" => "admin.quem-somos.destroy", "uses" => "QuemSomosController@destroy"]);
 
@@ -88,6 +88,8 @@ Route::get('add-usuarios', ['as' => 'admin.usuarios.create', 'uses' => 'UserCont
 Route::get('edit-usuarios', ['as' => 'admin.usuarios.edit', 'uses' => 'UserController@edit']);
 
 Route::post('salvar-usuarios', ['as' => 'admin.usuarios.store', 'uses' => 'UserController@store']);
+
+Route::post('alterar-usuarios/{id}', ['as' => 'admin.usuarios.update', 'uses' => 'UserController@update']);
 
 /* Fim Usuários */
 

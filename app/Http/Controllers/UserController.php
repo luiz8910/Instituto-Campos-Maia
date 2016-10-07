@@ -117,6 +117,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->repository->delete($id);
+
+        return redirect()->route('admin.usuarios.index');
     }
 }

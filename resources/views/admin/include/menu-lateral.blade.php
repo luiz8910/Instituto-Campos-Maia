@@ -273,30 +273,31 @@
             </li>
             <!-- fim Drop menu -->
 
-            <!--Drop menu -->
-            <li>
-                <a href="#drop9" class="list-group border-a-menu" data-toggle="collapse" data-parent="#MainMenu" style="margin-bottom: 0px !important;">
-                    <i class="fa fa-key i-ajuste" aria-hidden="true"></i>
-                    <span class="margin-font">Usuários do Admin</span>
-                    <i class="fa fa-sort-desc i-ajuste-right" aria-hidden="true"></i>
-                </a>
-                <ul class="list-group collapse ul-dropdown-color" id="drop9" style="margin-bottom: 0px !important;">
-                    <li>
-                        <a class="border-a-menu" href="{{ route('admin.usuarios.index') }}">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                            <span class="margin-font">Listar Usuarios</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="border-a-menu" href="{{ route('admin.usuarios.create') }}">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            <span class="margin-font">Add Usuarios</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- fim Drop menu -->
-
+            @if(Auth::user()->role == 'Administrador')
+                <!--Drop menu -->
+                <li>
+                    <a href="#drop9" class="list-group border-a-menu" data-toggle="collapse" data-parent="#MainMenu" style="margin-bottom: 0px !important;">
+                        <i class="fa fa-key i-ajuste" aria-hidden="true"></i>
+                        <span class="margin-font">Usuários do Admin</span>
+                        <i class="fa fa-sort-desc i-ajuste-right" aria-hidden="true"></i>
+                    </a>
+                    <ul class="list-group collapse ul-dropdown-color" id="drop9" style="margin-bottom: 0px !important;">
+                        <li>
+                            <a class="border-a-menu" href="{{ route('admin.usuarios.index') }}">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                                <span class="margin-font">Listar Usuarios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="border-a-menu" href="{{ route('admin.usuarios.create') }}">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <span class="margin-font">Add Usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- fim Drop menu -->
+            @endif
             <li>
                 <a class="border-a-menu" href="page-social-midia.html">
                     <i class="fa fa-user i-ajuste" aria-hidden="true"></i>

@@ -78,7 +78,7 @@
                                                 Editar
                                             </button>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#AdminModalDel{{ $u->id }}">
                                                 <i class="fa fa-ban" aria-hidden="true"></i>
                                                 Excluir
                                             </button>
@@ -126,7 +126,7 @@
                                                                 <option value="">Selecione</option>
                                                                 <option value="Administrador" selected>Administrador</option>
                                                                 <option value="Editor">Editor</option>
-                                                                <option value="Usuário Básico">Usuário Básico</option>
+                                                                <option value="Operador">Operador</option>
                                                             </select>
                                                             <p class="text-info">
                                                                 <i class="fa fa-question-circle " aria-hidden="true"></i>
@@ -146,6 +146,47 @@
                                             </div><!-- fim div .modal-content -->
                                         </div><!-- fim div .modal-dialog -->
                                     </div><!-- fim div .modal .fade -->
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="AdminModalDel{{ $u->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                {!! Form::open(['route' => ['admin.usuarios.destroy', $u->id], 'method' => 'post']) !!}
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Excluir Funcionario - {{ $u->name }}</h4>
+                                                </div><!-- fim div .modal-header -->
+                                                <div class="modal-body">
+                                                    {{--<div class="form-group">--}}
+                                                    {{--<label for="exampleInputFile">Imagem (Foto do Usuário)</label>--}}
+                                                    {{--<input type="file" id="exampleInputFile">--}}
+                                                    {{--<p class="text-info">--}}
+                                                    {{--<i class="fa fa-question-circle " aria-hidden="true"></i>--}}
+                                                    {{--A foto para o Usuário deve conter o tamanho de 500px X 600px!--}}
+                                                    {{--</p>--}}
+                                                    {{--</div>--}}
+                                                    <div class="form-group">
+                                                        <p>Deseja excluir o usuário {{ $u->name }}?</p>
+                                                    </div><!-- fim div .input-group -->
+
+
+                                                </div><!-- fim div .modal-body -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default">
+                                                        Cancelar
+                                                    </button>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-ban"></i>
+                                                        Excluir
+                                                    </button>
+                                                </div><!-- fim div .modal-footer -->
+                                                {!! Form::close() !!}
+                                            </div><!-- fim div .modal-content -->
+                                        </div><!-- fim div .modal-dialog -->
+                                    </div><!-- fim div .modal .fade -->
+
                                 </div><!-- fim div .Capition -->
                             </div><!-- fim div .thumbnail -->
                         </div><!-- fim  div .col-sm-6 col-md-3 -->
@@ -178,7 +219,7 @@
                                             Editar
                                         </button>
 
-                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#editModalDel{{ $e->id }}">
                                             <i class="fa fa-ban" aria-hidden="true"></i>
                                             Excluir
                                         </button>
@@ -245,6 +286,49 @@
                                             </div><!-- fim div .modal-content -->
                                         </div><!-- fim div .modal-dialog -->
                                     </div><!-- fim div .modal .fade -->
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="editModalDel{{ $e->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+
+                                                {!! Form::open(['route' => ['admin.usuarios.destroy', $e->id], 'method' => 'post']) !!}
+
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Excluir Funcionario - {{ $e->name }}</h4>
+                                                </div><!-- fim div .modal-header -->
+                                                <div class="modal-body">
+                                                    {{--<div class="form-group">--}}
+                                                    {{--<label for="exampleInputFile">Imagem (Foto do Usuário)</label>--}}
+                                                    {{--<input type="file" id="exampleInputFile">--}}
+                                                    {{--<p class="text-info">--}}
+                                                    {{--<i class="fa fa-question-circle " aria-hidden="true"></i>--}}
+                                                    {{--A foto para o Usuário deve conter o tamanho de 500px X 600px!--}}
+                                                    {{--</p>--}}
+                                                    {{--</div>--}}
+                                                    <div class="form-group">
+                                                        <p>Deseja excluir o usuário {{ $e->name }}?</p>
+                                                    </div><!-- fim div .input-group -->
+
+
+                                                </div><!-- fim div .modal-body -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default">
+                                                        Cancelar
+                                                    </button>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-ban"></i>
+                                                        Excluir
+                                                    </button>
+                                                </div><!-- fim div .modal-footer -->
+                                                {!! Form::close() !!}
+                                            </div><!-- fim div .modal-content -->
+                                        </div><!-- fim div .modal-dialog -->
+                                    </div><!-- fim div .modal .fade -->
+
+
                                 </div><!-- fim div .Capition -->
                             </div><!-- fim div .thumbnail -->
                         </div><!-- fim  div .col-sm-6 col-md-3 -->
@@ -277,7 +361,7 @@
                                                 Editar
                                             </button>
 
-                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal1">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#operModalDel{{ $o->id }}">
                                                 <i class="fa fa-ban" aria-hidden="true"></i>
                                                 Excluir
                                             </button>
@@ -289,31 +373,37 @@
                                                 Alterar Imagem
                                             </button>
                                         </p>
+
+
                                         <!-- Modal -->
                                         <div class="modal fade" id="operModal{{ $o->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
+
                                                     {!! Form::open(['route' => ['admin.usuarios.update', $o->id], 'method' => 'post']) !!}
+
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                         <h4 class="modal-title" id="myModalLabel">Editar Funcionario - {{ $o->name }}</h4>
                                                     </div><!-- fim div .modal-header -->
+
                                                     <div class="modal-body">
 
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Nome do Usuário</label>
                                                             <input type="text" class="form-control" id="name"
-                                                                   placeholder="Nome do Usuário" name="name" value="{{ $o->name }}" required>
+                                                                   name="name" value="{{ $o->name }}" placeholder="Nome do Usuário" required>
                                                             <p class="text-info">
                                                                 <i class="fa fa-question-circle " aria-hidden="true"></i>
                                                                 O campo acima deve conter o nome do funcionário!
                                                             </p>
                                                         </div><!-- fim div .input-group -->
+
                                                         <div class="form-group">
                                                             <label for="exampleInputEmail1">Função do Usuário</label>
-                                                            <select class="form-control" name="role" id="role" required>
+                                                            <select class="form-control" name="role" required>
                                                                 <option value="">Selecione</option>
                                                                 <option value="Administrador">Administrador</option>
                                                                 <option value="Editor">Editor</option>
@@ -331,6 +421,39 @@
                                                         <button type="submit" class="btn btn-success">
                                                             <i class="fa fa-check-square-o"></i>
                                                             Salvar
+                                                        </button>
+                                                    </div><!-- fim div .modal-footer -->
+
+                                                    {!! Form::close() !!}
+                                                </div><!-- fim div .modal-content -->
+                                            </div><!-- fim div .modal-dialog -->
+                                        </div><!-- fim div .modal .fade -->
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="operModalDel{{ $o->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+
+                                                    {!! Form::open(['route' => ['admin.usuarios.destroy', $o->id], 'method' => 'post']) !!}
+
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Excluir Funcionario - {{ $o->name }}</h4>
+                                                    </div><!-- fim div .modal-header -->
+                                                    <div class="modal-body">
+                                                        <div class="form-group">
+                                                            <p>Deseja excluir o usuário {{ $o->name }}?</p>
+                                                        </div><!-- fim div .input-group -->
+
+
+                                                    </div><!-- fim div .modal-body -->
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default">
+                                                            Cancelar
+                                                        </button>
+                                                        <button type="submit" class="btn btn-danger">
+                                                            <i class="fa fa-ban"></i>
+                                                            Excluir
                                                         </button>
                                                     </div><!-- fim div .modal-footer -->
                                                     {!! Form::close() !!}

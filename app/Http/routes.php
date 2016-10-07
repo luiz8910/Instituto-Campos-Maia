@@ -13,6 +13,10 @@
 
 Route::group(['middleware' => 'auth.checkrole:Editor'], function(){
     Route::get('/', ["as" => "admin.dashboard.index", "uses" => "DashboardController@index"]);
+
+    Route::get('edit-usuarios', ['as' => 'admin.usuarios.edit', 'uses' => 'UserController@edit']);
+
+    Route::post('alterar-usuarios/{id}', ['as' => 'admin.usuarios.update', 'uses' => 'UserController@update']);
 });
 
 Route::group(['middleware' => 'auth.checkrole:Administrador'], function(){
@@ -90,11 +94,7 @@ Route::group(['middleware' => 'auth.checkrole:Administrador'], function(){
 
     Route::get('add-usuarios', ['as' => 'admin.usuarios.create', 'uses' => 'UserController@create']);
 
-    Route::get('edit-usuarios', ['as' => 'admin.usuarios.edit', 'uses' => 'UserController@edit']);
-
     Route::post('salvar-usuarios', ['as' => 'admin.usuarios.store', 'uses' => 'UserController@store']);
-
-    Route::post('alterar-usuarios/{id}', ['as' => 'admin.usuarios.update', 'uses' => 'UserController@update']);
 
     Route::post('excluir-usuarios/{id}', ['as' => 'admin.usuarios.destroy', 'uses' => 'UserController@destroy']);
 

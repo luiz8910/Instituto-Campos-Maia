@@ -39,7 +39,12 @@
                             </a>
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a></li>
+                        <li>
+                            <a href="{{ url('/auth/logout') }}">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                Sair
+                            </a>
+                        </li>
                     </ul> <!-- fim ul .dropdown-menu -->
                 </li> <!-- fim li .dropdown -->
             </ul> <!-- fim ul .nav .nav-bar .navbar-right -->

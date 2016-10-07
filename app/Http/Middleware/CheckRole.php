@@ -23,7 +23,7 @@ class CheckRole
 
         if(Auth::user()->role <> $role && Auth::user()->role <> 'Administrador')
         {
-            //se a role do usuário autenticado bate com a $role que passamos
+            //se a role do usuário autenticado não bate com a $role que passamos
             return redirect('/auth/login');
         }
 

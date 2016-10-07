@@ -14,6 +14,10 @@
 <!-- folha de estilo FontAwesome -->
 <link rel="stylesheet" href="assets/font/font-awesome-4.6.3/css/font-awesome.min.css">
 
+<script src="assets/js/bootstrap-wysiwyg.js"></script>
+{{--<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>--}}
+{{--<script>tinymce.init({ selector:'textarea' });</script>--}}
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

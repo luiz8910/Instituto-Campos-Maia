@@ -225,6 +225,9 @@ $(function () {
     });
 
 
+    $('#description').wysiwyg();
+
+
 
     function scroll() {
         $('html, body').animate({

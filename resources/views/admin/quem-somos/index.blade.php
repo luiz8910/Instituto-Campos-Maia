@@ -46,7 +46,11 @@
                             <div class="col-md-8 col-sm-12">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Descrição da Empresa</label>
-                                    <textarea class="form-control" name="description" rows="10" id="description">{{$quemSomos->description}}</textarea>
+                                    <div class="btn-toolbar" data-role="editor-toolbar"
+                                         data-target="#description">
+                                        <textarea class="form-control" name="description" rows="10" id="description" style="overflow:scroll; max-height:300px">{{$quemSomos->description}}</textarea>
+
+                                    </div>
                                     <p class="text-info">
                                         <i class="fa fa-question-circle" aria-hidden="true"></i>
                                         No campo acima faça uma descrição detalhada de sua empresa!

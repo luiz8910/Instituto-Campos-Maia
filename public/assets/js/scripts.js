@@ -225,7 +225,21 @@ $(function () {
     });
 
 
-    $('#description').wysiwyg();
+    $('#description').summernote({
+        height: '200px'
+    });
+
+    $('#whyUS').summernote({
+        height: '200px'
+    });
+
+    $('#ourValues').summernote({
+        height: '200px'
+    });
+
+    $('#vision').summernote({
+        height: '200px'
+    });
 
 
 

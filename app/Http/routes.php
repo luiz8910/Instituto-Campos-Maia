@@ -14,6 +14,8 @@
 Route::group(['middleware' => 'auth.checkrole:Editor'], function(){
     Route::get('/', ["as" => "admin.dashboard.index", "uses" => "DashboardController@index"]);
 
+    Route::get('email', ['as' => 'admin.dashboard.email', 'uses' => 'DashboardController@email']);
+
     Route::get('edit-usuarios', ['as' => 'admin.usuarios.edit', 'uses' => 'UserController@edit']);
 
     Route::post('alterar-usuarios/{id}', ['as' => 'admin.usuarios.update', 'uses' => 'UserController@update']);

@@ -46,10 +46,10 @@
 
 
 					<br>
-					<button type="submit" class="btn btn-success" id="subir">
+					<a href="{{ route('admin.dashboard.index') }}" type="button" class="btn btn-success" id="subir">
 						<i class="fa fa-check-square-o"></i>
 						Salvar
-					</button>
+					</a>
 				</div> <!-- fim div .col-lg-12 -->
 			</div>  <!-- fim div .row -->
 		</div> <!-- fim div .container-fluid -->
@@ -66,7 +66,5 @@
 	</div> <!-- fim div .container -->
 </footer>
 <!-- fim footer -->
-
-@include('admin.include.scripts')
 </body>
 </html>

@@ -17,20 +17,20 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //return view("admin.dashboard.index");
-        return view('emails.index');
+        return redirect("/home");
     }
 
     public function email()
     {
         $data = [];
 
-//        Mail::send('emails.index', $data, function ($message) {
-//            $message->from('luizsanches@robots.com.br', 'Laravel');
-//
-//            $message->to('luiz.sanches8910@gmail.com');
-//        });
+        Mail::send('emails.index', $data, function ($message) {
+            $message->from('luizsanches@robots.com.br', 'Laravel');
 
+            $message->to('marvin@robots.com.br');
+        });
+
+        return redirect()->route('admin.dashboard.index');
 
         //return view("emails.password");
     }

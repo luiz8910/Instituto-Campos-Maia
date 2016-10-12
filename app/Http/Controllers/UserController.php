@@ -10,6 +10,7 @@ use Admin\Http\Requests\UserRequest;
 
 use Admin\Http\Requests;
 use Admin\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Mockery\CountValidator\Exception;
 
@@ -72,7 +73,7 @@ class UserController extends Controller
 
         $this->repository->create($data);
 
-        return redirect()->route('admin.usuarios.index');
+        return redirect()->route('admin.usuarios.edit');
     }
 
     /**
@@ -106,7 +107,7 @@ class UserController extends Controller
     {
         $this->repository->update($request->all(), $id);
 
-        return redirect()->route('admin.usuarios.index');
+        return redirect()->route('admin.usuarios.edit');
     }
 
     /**
@@ -119,6 +120,47 @@ class UserController extends Controller
     {
         $this->repository->delete($id);
 
-        return redirect()->route('admin.usuarios.index');
+        return redirect()->route('admin.usuarios.edit');
+    }
+
+    /*
+     * Altera a imagem do usuário alvo, função exclusiva do admin
+     *
+     * @param Request $request
+     * @param int $id
+     *
+     * @return Response
+     * */
+    public function updateImg(Request $request, $id)
+    {
+        $user = $this->repository->find($id);
+
+        $request->file('img')->move('uploads/users', $user->name.'.png');
+
+        DB::table('users')->
+            where('id', $id)->
+            update(['img' => $user->name]);
+
+        return back();
+    }
+
+    /*
+     * Altera a imagem do usuário logado
+     *
+     * @param Request $request
+     * @return Response
+     * */
+    public function updateImgLog(Request $request)
+    {
+        $name = Auth::user()->name;
+        $id = Auth::user()->id;
+
+        $request->file('img')->move('uploads/users', $id.'.png');
+
+        DB::table('users')->
+            where('id', $id)->
+            update(['img' => $name]);
+
+        return back();
     }
 }

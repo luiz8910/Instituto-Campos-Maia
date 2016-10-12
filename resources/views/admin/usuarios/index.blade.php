@@ -66,7 +66,7 @@
 
                         <div class="col-sm-6 col-md-3 col-xs-12">
                             <div class="thumbnail">
-                                <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="{{ $u->name }}">
+                                <img class="img-responsive" src="uploads/users/{{ $u->id }}.png" alt="{{ $u->name }}">
                                 <div class="caption">
                                     <h4>{{ $u->name }}</h4>
                                     <p>
@@ -207,7 +207,7 @@
                     @foreach($editor as $e)
                         <div class="col-sm-6 col-md-3 col-xs-12">
                             <div class="thumbnail">
-                                <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="Imagem responsiva">
+                                <img class="img-responsive" src="uploads/users/{{ $e->id }}.png" alt="Imagem responsiva">
                                 <div class="caption">
                                     <h4>{{ $e->name }}</h4>
                                     <p>
@@ -349,7 +349,7 @@
 
                             <div class="col-sm-6 col-md-3 col-xs-12">
                                 <div class="thumbnail">
-                                    <img class="img-responsive" src="assets/upload/banner/banner-1.svg" alt="Imagem responsiva">
+                                    <img class="img-responsive" src="uploads/users/{{ $o->id }}.png" alt="Imagem responsiva">
                                     <div class="caption">
                                         <h4>{{ $o->name }}</h4>
                                         <p>

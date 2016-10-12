@@ -77,7 +77,15 @@
                                 <a type="button" class="btn btn-link" href="{{ url('/password/email') }}">Perdeu Sua Senha? clique aqui</a>
                             </div><!-- div /.row -->
                             <br>
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <button type="submit" class="btn btn-success btn-block" style="margin-bottom: 10px;">Login</button>
+
+                            @if($errors->any)
+                                @foreach($errors->all() as $e)
+                                    <?php $e = str_replace('These credentials do not match our records.',
+                                            'Os dados informados não correspondem a nossa base de dados', $e); ?>
+                                    <p>{{ str_replace('password', 'senha', $e) }}</p>
+                                @endforeach
+                            @endif
                         </form>
 
                     </div><!-- div /.ajust-tela -->

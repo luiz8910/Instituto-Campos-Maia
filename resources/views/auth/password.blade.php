@@ -63,7 +63,20 @@
                                 login.</a>
                         </div><!-- div /.row -->
                         <br>
-                        <button type="submit" class="btn btn-success btn-block">Enviar</button>
+                        <button type="submit" class="btn btn-success btn-block" style="margin-bottom: 10px;">Enviar</button>
+
+                        @if($errors->any)
+                            @foreach($errors->all() as $e)
+                                <?php
+                                    $e = str_replace("We can't find a user with that e-mail address.",
+                                        'O email informado não existe', $e);
+
+                                    $e = str_replace('The email must be a valid email address.',
+                                            'O email informado não está num formato válido', $e);
+                                ?>
+                                <p>{{ $e }}</p>
+                            @endforeach
+                        @endif
                     </form>
                 </div><!-- div /.ajust-tela -->
             </div> <!-- div/.col-md-12.col-sm-12.col-xs-12  -->

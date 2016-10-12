@@ -45,19 +45,26 @@
 
                     <div class="col-md-3 col-sm-12 col-sm-12 ">
                         <div class="thumbnail">
-                            <img src="assets/upload/banner/banner-1.svg" alt="...">
+                            <img src="uploads/users/{{ Auth::user()->id }}.png" alt="...">
+
                             <h3>{{ Auth::user()->name }}</h3>
+
                             <div class="list-group" style="border-radius:none;">
+
                                 <a href="#visao" class="list-group-item a-style-menu-inline" aria-controls="visao" role="tab" data-toggle="tab" style="border-radius: 0px !important;">
                                     <i class="fa fa-user" aria-hidden="true"></i>
                                     Visão geral
                                 </a>
+
                                 <a href="#conta" class="list-group-item a-style-menu-inline" aria-controls="messages" role="tab" data-toggle="tab">
                                     <i class="fa fa-key" aria-hidden="true"></i>
                                     Minha Conta
                                 </a>
+
                             </div> <!-- Fim div .list-group -->
+
                         </div> <!-- fim div .thumbnail -->
+
                     </div> <!-- Fim div .col-md-3 .col-sm-3 -->
 
                     <div class="col-md-9 col-sm-12 col-xs-12">
@@ -124,48 +131,78 @@
                                                 </h4>
                                                 <div class="separador-2"></div> <!-- fim div.separador-2 -->
 
-                                                <div class="form-group text-color-1">
-                                                    <label for="">Nome </label>
-                                                    <input type="text" class="form-control" id="name"
-                                                           name="name" placeholder="Nome" value="{{ Auth::user()->name }}" >
-                                                </div> <!-- fim div .form-group -->
+                                                {!! Form::open(['route' => ['admin.usuarios.update', Auth::user()->id], 'method' => 'post']) !!}
 
                                                 <div class="form-group text-color-1">
-                                                    <label for="">Data do Nascimento </label>
-                                                    <input type="date" class="form-control" id="" placeholder="" value="" >
+                                                    <label for="">Nome </label>
+
+                                                    <input type="text" class="form-control" id="name"
+                                                           name="name" placeholder="Nome" value="{{ Auth::user()->name }}" >
+
                                                 </div> <!-- fim div .form-group -->
 
                                                 <div class="form-group text-color-1">
                                                     <label for="">Cargo </label>
+
                                                     <input type="text" class="form-control" id="role"
-                                                           name="role" placeholder="Cargo" value="{{ Auth::user()->role }}" >
+                                                           name="role" placeholder="Cargo" readonly value="{{ Auth::user()->role }}" >
+
                                                 </div> <!-- fim div .form-group -->
 
                                                 <div class="form-group text-color-1">
                                                     <label for="">Email </label>
+
                                                     <input type="email" class="form-control" id="email"
                                                           name="email" placeholder="Email" value="{{ Auth::user()->email }}" >
+
                                                 </div> <!-- fim div .form-group -->
+
                                                 <br>
+
                                                 <button type="submit" class="btn btn-success" id="subir">
+
                                                     <i class="fa fa-check-square-o"></i>
+
                                                     Alterar
+
                                                 </button>
+
+                                                {!! Form::close() !!}
+
                                             </div> <!-- fim div .tab-pane.fade.in.active#info -->
 
                                             <!-- Fim tab #info -->
 
                                             <div role="tabpanel" class="tab-pane fade" id="avatar">
+                                                {!! Form::open(['route' => 'admin.usuarios.update-img', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                                                 <h4 class="text-center">
                                                     <i class="fa fa-cog" aria-hidden="true"></i>
                                                     Trocar avatar
                                                 </h4>
                                                 <div class="separador-2"></div> <!-- fim div.separador-2 -->
                                                 <br>
+
+                                                <div class="form-group">
+
+                                                    <label for="exampleInputFile" style="margin-bottom: 10px;">Imagem (Foto do Usuário)</label>
+
+                                                    <input type="file" name="img" id="exampleInputFile" style="margin-bottom: 10px;">
+
+                                                    <p class="text-info">
+
+                                                    <i class="fa fa-question-circle " aria-hidden="true"></i>
+
+                                                    A foto para o Usuário deve conter o tamanho de 500px X 600px!
+                                                    </p>
+
+                                                </div>
+                                                <br>
+
                                                 <button type="submit" class="btn btn-success" id="subir">
                                                     <i class="fa fa-check-square-o"></i>
                                                     Alterar
                                                 </button>
+                                                {!! Form::close() !!}
                                             </div> <!-- fim div .tab-pane.fade.in.active#avatar -->
 
                                             <!-- Fim tab #avatar -->

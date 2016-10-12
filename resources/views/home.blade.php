@@ -46,7 +46,7 @@
 
 
 					<br>
-					<a href="{{ route('admin.dashboard.index') }}" type="button" class="btn btn-success" id="subir">
+					<a href="{{ route('admin.dashboard.email') }}" type="button" class="btn btn-success" id="subir">
 						<i class="fa fa-check-square-o"></i>
 						Salvar
 					</a>
